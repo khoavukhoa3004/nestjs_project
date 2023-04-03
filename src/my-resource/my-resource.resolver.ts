@@ -9,7 +9,9 @@ export class MyResourceResolver {
   constructor(private readonly myResourceService: MyResourceService) {}
 
   @Mutation(() => MyResource)
-  createMyResource(@Args('createMyResourceInput') createMyResourceInput: CreateMyResourceInput) {
+  createMyResource(
+    @Args('createMyResourceInput') createMyResourceInput: CreateMyResourceInput,
+  ) {
     return this.myResourceService.create(createMyResourceInput);
   }
 
@@ -24,8 +26,13 @@ export class MyResourceResolver {
   }
 
   @Mutation(() => MyResource)
-  updateMyResource(@Args('updateMyResourceInput') updateMyResourceInput: UpdateMyResourceInput) {
-    return this.myResourceService.update(updateMyResourceInput.id, updateMyResourceInput);
+  updateMyResource(
+    @Args('updateMyResourceInput') updateMyResourceInput: UpdateMyResourceInput,
+  ) {
+    return this.myResourceService.update(
+      updateMyResourceInput.id,
+      updateMyResourceInput,
+    );
   }
 
   @Mutation(() => MyResource)
